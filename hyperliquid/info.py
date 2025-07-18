@@ -627,3 +627,15 @@ class Info(API):
 
     def name_to_asset(self, name: str) -> int:
         return self.coin_to_asset[self.name_to_coin[name]]
+
+    # ADD：手动添加的代码(2025-04-24 10:14:47)
+    def perps_at_open_interest_cap(self) -> Meta:
+        """Retrieve exchange perp metadata
+
+        POST /info
+
+        Returns:
+            ["CANTO", "FTM", "GOAT", "JELLY", "LOOM", "RLB", "VVV", "ZEREBRO"]
+
+        """
+        return cast(Meta, self.post("/info", {"type": "perpsAtOpenInterestCap"}))
